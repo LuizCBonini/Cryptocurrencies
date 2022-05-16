@@ -9,6 +9,7 @@ module.exports = {
         'dacxi-blue': '#000032',
       },
       textColor: {
+        'dacxi-blue': '#000032',
         'dacxi-purple': '#AA69FF',
       },
     },
