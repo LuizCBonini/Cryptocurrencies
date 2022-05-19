@@ -3,8 +3,14 @@
  
 
 <h1 align="center">
-    <a href="https://dacxi-teste-cryptocurrencies.netlify.app/" target="_blank">🔗 Cryptocurrencies</a>
+    <a href="https://dacxi-teste-cryptocurrencies.netlify.app/">🔗 Cryptocurrencies</a>
 </h1>
+
+
+ >Esse foi meu primerio SPA desenvolvido totalmente em Vue e Tailwind, por isso agradeço a oportunidade de aprender tanto em um projeto que certamente agregará muito em meu portfólio.
+
+ >Ainda tem algumas coisas que quero e irei ajustar, como a funcionalidade dos cards que logo devo atualizar para que funcionem isoladamente. 
+
 <p align="center">🚀 Website com atualizações em tempo real dos valores de 5 criptomoedas (Bitcoin, Ethereum, Atom, Luna e Dacxi), consumindo a API <a href="https://www.coingecko.com/en/api/documentation">CoinGecko</a>. Também é possivel pesquisar os valores em datas e horas especificas.</p>
 
 
