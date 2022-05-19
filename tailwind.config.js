@@ -5,15 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundColor: {
+
+      colors: {
         'dacxi-blue': '#000032',
-        'dacxi-purple': '#AA69FF',
-      },
-      textColor: {
-        'dacxi-blue': '#000032',
-        'dacxi-purple': '#AA69FF',
-      },
-      borderColor: {
         'dacxi-purple': '#AA69FF',
       },
 

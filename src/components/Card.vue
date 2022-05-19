@@ -1,18 +1,18 @@
 <template>
-    <div class="flex w-auto flex-wrap justify-center items-center gap-4">
-        <div v-for="coin of bagOfCoins"  :key="coin.code"  class="bg-dacxi-blue p-5 mb-2 font-semibold flex w-80 rounded-md border-solid border-2 border-dacxi-purple relative md:hover:scale-105 ease duration-300">
-            <img :src="coin.image" alt="coin icon" class="w-16 rounded-full">
+    <div class="flex w-auto flex-wrap justify-center items-center gap-4 h-auto h-auto">
+        <div v-for="coin of bagOfCoins"  :key="coin.code"  class="h-28 bg-dacxi-blue p-5 mb-2 font-semibold flex w-72 sm:w-80 rounded-md border-solid border-2 border-dacxi-purple relative md:hover:scale-105 ease duration-300">
+            <img :src="coin.image" alt="coin icon" class="w-14 sm:w-16 rounded-full">
             <span class="ml-2 flex text-lg" >
 
-                <h1 class="text-dacxi-purple text-lg">
+                <h1 class="text-dacxi-purple text-lg" v-if="coin.name === 'Cosmos Hub' ? coin.name = 'Cosmos' : ' '">
                     {{coin.name}}
                 </h1>
                 <p class="text-gray-500 text-xs">({{coin.symbol}})</p>
                 <p class="text-dacxi-purple absolute bottom-10" v-if="requestCoin === false">U$ {{coin.current_price.toFixed(4)}}</p>
                 <p class="text-dacxi-purple absolute bottom-10" v-else-if="requestCoin === true && coin.name === 'Bitcoin'">U$ {{price_btc.toFixed(2)}}</p>
                 <p class="text-dacxi-purple absolute bottom-10" v-else-if="requestCoin === true && coin.name === 'Ethereum'">U$ {{price_eth.toFixed(2)}}</p>
-                <p class="text-dacxi-purple absolute bottom-10" v-else-if="requestCoin === true && coin.name === 'Cosmos Hub'">U$ {{price_atom.toFixed(2)}}</p>
-                <p class="text-dacxi-purple absolute bottom-10" v-else-if="requestCoin === true && coin.name === 'Terra'">U$ {{price_luna.toFixed(2)}}</p>
+                <p class="text-dacxi-purple absolute bottom-10" v-else-if="requestCoin === true && coin.name === 'Cosmos'">U$ {{price_atom.toFixed(2)}}</p>
+                <p class="text-dacxi-purple absolute bottom-10" v-else-if="requestCoin === true && coin.name === 'Terra'">U$ {{price_luna.toFixed(4)}}</p>
                 <p class="text-dacxi-purple absolute bottom-10" v-else-if="requestCoin === true && coin.name === 'Dacxi'">U$ {{price_dacxi.toFixed(3)}}</p>
 
                 <span class="flex h-3 w-3 ml-1">
@@ -29,7 +29,7 @@
                 <p class="text-dacxi-purple absolute text-xs bottom-7" v-else-if="requestCoin === true">In the date:</p>
 
                 <input type="date"  v-model="date" class="h-5 w-24 text-xs text-dacxi-blue bg-dacxi-purple rounded absolute bottom-2">
-                <input type="time" v-model="time" class="h-5 w-16 text-xs text-dacxi-blue bg-dacxi-purple rounded absolute bottom-2 right-11">
+                <input type="time" v-model="time" class="h-5 w-14 sm:w-16 text-xs text-dacxi-blue bg-dacxi-purple rounded absolute bottom-2 right-11">
 
                 <button class="text-sx text-dacxi-purple border-2 border-dacxi-purple rounded h-6 w-6 absolute bottom-2 right-2 hover:bg-dacxi-purple hover:text-dacxi-blue duration-500" @click.prevent="timestampConversor()" @click="requestCoin = true" :disabled="isDisable">
                     
@@ -43,7 +43,7 @@
 
         </div>
     </div>
-            <div class="flex w-auto"><button @click.prevent="resetDateAndTime()" @click="requestCoin = false" class="border-2 border-dacxi-purple bg-dacxi-blue text-dacxi-purple rounded font-bold w-20 m-auto">voltar</button></div>
+            <div class="flex w-auto"><button @click.prevent="resetDateAndTime()" @click="requestCoin = false" class="border-2 border-dacxi-purple bg-dacxi-blue text-dacxi-purple rounded font-bold w-40 m-auto mb-20 ">Back Live</button></div>
 </template>
 
 <script>
@@ -61,7 +61,7 @@ export default {
         //api call
         const getCoins = async () => {
             try {
-                const res = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin%2Cdacxi%2Cethereum%2Cterra-luna%2Ccosmos&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=7d%2C14d%2C30d%2C200d%2C1y");
+                const res = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin%2Cdacxi%2Cethereum%2Ccosmos%2Cterra-luna&order=market_cap_desc&per_page=100&page=1&sparkline=false");
                 coins.value = res.data;
 
 
